@@ -8,7 +8,7 @@
 ## 📸 Screenshots
  
 <p align="center">
-  <img src="assets/images/Screenshot%202025-11-20%20225946.png" width="260">
+  <img src="‎assets/images/Screenshot 2025-11-20 230242.png‎" width="260">
   <img src="assets/images/Screenshot%202025-11-20%20230213.png" width="260">
   <img src="assets/images/Screenshot%202025-11-20%20230305.png" width="260"> 
   <img src="assets/images/Screenshot%202025-11-20%20230705.png" width="260">
