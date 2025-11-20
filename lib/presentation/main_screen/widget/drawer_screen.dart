@@ -84,12 +84,12 @@ class _DrawerScreenState extends State<DrawerScreen> {
               //banners
               CustomCardDrawer(
                 cuurentbage: cuurentbage,
-                routName: RouteNames.banner,
-                icon: Icons.image,
+                routName: RouteNames.user,
+                icon: Icons.supervised_user_circle_rounded,
                 ontap: () {
                   Router.neglect(
                     context,
-                    () => context.goNamed(RouteNames.banner),
+                    () => context.goNamed(RouteNames.user),
                   );
                   _closeDrawer();
                 },
