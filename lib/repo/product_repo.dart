@@ -1,5 +1,6 @@
 import 'package:admain_panel/core/error/failure.dart';
 import 'package:admain_panel/core/error/sever_exption.dart';
+import 'package:admain_panel/model/category_model.dart';
 import 'package:admain_panel/model/product_model.dart';
 import 'package:admain_panel/model/user_model.dart';
 import 'package:admain_panel/services/data_base_services.dart';
@@ -11,6 +12,7 @@ import 'package:firebase_core/firebase_core.dart';
 abstract class ProductRepo {
   Future<Either<Failure, List<ProductModel>>> getAllProduct();
   Future<Either<Failure, List<UserModel>>> getUsers();
+  Future<Either<Failure, List<CatogryModel>>> getCategories();
 }
 
 class ProductRepoImpl extends ProductRepo {
@@ -35,6 +37,18 @@ class ProductRepoImpl extends ProductRepo {
     try {
       final users = await productservises.getUsers();
       return right(users);
+    } on FirebaseException catch (e) {
+      return left(Failure(MyFirebaseServiceException(e.code).message));
+    } catch (e) {
+      return left(Failure(e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<CatogryModel>>> getCategories() async {
+    try {
+      final catefories = await productservises.getcategory();
+      return right(catefories);
     } on FirebaseException catch (e) {
       return left(Failure(MyFirebaseServiceException(e.code).message));
     } catch (e) {

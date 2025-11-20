@@ -8,6 +8,7 @@ import 'package:admain_panel/presentation/main_screen/screen/main_scree.dart';
 import 'package:admain_panel/presentation/order/screen/order_screen.dart';
 import 'package:admain_panel/presentation/product/screen/product_screen.dart';
 import 'package:admain_panel/view_model/auth_cubit/auth_cubit.dart';
+import 'package:admain_panel/view_model/categories_cubit.dart/categories_cubit.dart';
 import 'package:admain_panel/view_model/product_cubit/product_cubit.dart';
 import 'package:admain_panel/view_model/user_cubit/user_cubit.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -88,7 +89,10 @@ class AppRouter {
           GoRoute(
             path: RoutePaths.categoriesScreen,
             name: RouteNames.categoriesScreen,
-            builder: (context, state) => CategoriesScreen(),
+            builder: (context, state) => BlocProvider(
+              create: (context) => sl<CategoriesCubit>()..getCategory(),
+              child: CategoriesScreen(),
+            ),
           ),
           //======baner
           GoRoute(

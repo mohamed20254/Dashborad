@@ -8,3 +8,21 @@ sealed class CategoriesState extends Equatable {
 }
 
 final class CategoriesInitial extends CategoriesState {}
+
+final class CategoriesLoding extends CategoriesState {}
+
+final class CategoriesFinished extends CategoriesState {
+  final List<CatogryModel> categories;
+
+  const CategoriesFinished({required this.categories});
+  @override
+  List<Object> get props => [categories];
+}
+
+final class CategoriesFailure extends CategoriesState {
+  final String message;
+
+  const CategoriesFailure({required this.message});
+  @override
+  List<Object> get props => [message];
+}
