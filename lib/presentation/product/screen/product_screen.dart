@@ -18,7 +18,7 @@ class _ProductScreenState extends State<ProductScreen> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
 
           Expanded(
             child: Card(
@@ -28,7 +28,7 @@ class _ProductScreenState extends State<ProductScreen> {
                 child: BlocBuilder<ProductCubit, ProductState>(
                   builder: (context, state) {
                     if (state is ProductLoding) {
-                      return Center(child: CircularProgressIndicator());
+                      return const Center(child: CircularProgressIndicator());
                     } else if (state is ProductFailure) {
                       return Center(child: Text(state.message));
                     }
@@ -36,7 +36,7 @@ class _ProductScreenState extends State<ProductScreen> {
                       return Column(
                         children: [
                           _buildAppbarwithPeouduct(context),
-                          SizedBox(height: 20),
+                          const SizedBox(height: 20),
                           Expanded(
                             child: SizedBox(
                               child: ScrollConfiguration(
@@ -58,7 +58,7 @@ class _ProductScreenState extends State<ProductScreen> {
                                           );
                                           setState(() {});
                                         },
-                                        icon: Icon(
+                                        icon: const Icon(
                                           Icons.delete,
                                           color: Colors.red,
                                         ),
@@ -74,8 +74,8 @@ class _ProductScreenState extends State<ProductScreen> {
                                         context,
                                       ).textTheme.bodyLarge,
                                     ),
-                                    rowsPerPage: 15,
-                                    columns: [
+                                    rowsPerPage: 7,
+                                    columns: const [
                                       DataColumn(label: Text("image")),
                                       DataColumn(label: Text("ID")),
                                       DataColumn(label: Text("Name")),
@@ -134,12 +134,12 @@ class _ProductScreenState extends State<ProductScreen> {
             scale: 0.8,
             child: TextField(
               decoration: InputDecoration(
-                prefixIcon: Icon(Icons.search),
+                prefixIcon: const Icon(Icons.search),
                 hintText: "Search...",
                 hintStyle: Theme.of(context).textTheme.labelLarge,
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
-                  borderSide: BorderSide(color: Colors.black),
+                  borderSide: const BorderSide(color: Colors.black),
                 ),
               ),
             ),

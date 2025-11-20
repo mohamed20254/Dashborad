@@ -2,13 +2,13 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
 class WeeklySales {
+  WeeklySales(this.day, this.value);
   final String day;
   final double value;
-
-  WeeklySales(this.day, this.value);
 }
 
 class BarChartPage extends StatelessWidget {
+  BarChartPage({super.key});
   // بيانات ديناميكية — تقدر تغيرها أو تجيبها من API
   final List<WeeklySales> salesData = [
     WeeklySales("Sat", 1500),
@@ -20,11 +20,9 @@ class BarChartPage extends StatelessWidget {
     WeeklySales("Fri", 4000),
   ];
 
-  BarChartPage({super.key});
-
   // توليد أعمدة تلقائيًا
   List<BarChartGroupData> getBarGroups() {
-    return List.generate(salesData.length, (index) {
+    return List.generate(salesData.length, (final index) {
       return BarChartGroupData(
         x: index,
         barRods: [
@@ -39,26 +37,26 @@ class BarChartPage extends StatelessWidget {
   }
 
   // توليد عناوين الأيام تحت الأعمدة
-  Widget getBottomTitles(double value, TitleMeta meta) {
-    final style = TextStyle(fontSize: 12);
+  Widget getBottomTitles(final double value, final TitleMeta meta) {
+    final style = const TextStyle(fontSize: 12);
 
     return Text(salesData[value.toInt()].day, style: style);
   }
 
   // توليد محور Y k بشكل ديناميكي
-  Widget getLeftTitles(double value, TitleMeta meta) {
+  Widget getLeftTitles(final double value, final TitleMeta meta) {
     if (value % 1000 == 0) {
-      double kValue = value / 1000;
+      final double kValue = value / 1000;
       return Text(
         "${kValue.toStringAsFixed(1)}K",
-        style: TextStyle(fontSize: 12),
+        style: const TextStyle(fontSize: 12),
       );
     }
     return Container();
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(final BuildContext context) {
     return BarChart(
       BarChartData(
         backgroundColor: Colors.white,
@@ -81,8 +79,8 @@ class BarChartPage extends StatelessWidget {
               reservedSize: 32,
             ),
           ),
-          topTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
-          rightTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
+          topTitles: const AxisTitles(),
+          rightTitles: const AxisTitles(),
         ),
 
         barGroups: getBarGroups(),

@@ -3,8 +3,6 @@ import 'package:admain_panel/core/constant/app_icons.dart';
 import 'package:admain_panel/core/helper/app_validation.dart';
 import 'package:admain_panel/core/responsive/app_responsive.dart';
 import 'package:admain_panel/view_model/auth_cubit/auth_cubit.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -28,7 +26,7 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(final BuildContext context) {
     return Scaffold(
       body: Container(
         padding: EdgeInsets.symmetric(
@@ -72,7 +70,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     style: Theme.of(context).textTheme.bodyMedium,
                   ),
 
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
                   CustomTextFiled(
                     icon: Icons.email_outlined,
                     controller: emailController,
@@ -80,16 +78,16 @@ class _LoginScreenState extends State<LoginScreen> {
                     autofocus: true,
                     validator: AppValidators.validateEmail,
                   ),
-                  SizedBox(height: 15),
+                  const SizedBox(height: 15),
                   CustomTextFiled(
                     controller: passwordController,
                     icon: Icons.lock_clock_outlined,
                     labelText: "Password",
                     validator: AppValidators.validatePassword,
                   ),
-                  SizedBox(height: 30),
+                  const SizedBox(height: 30),
                   BlocConsumer<AuthCubit, AuthState>(
-                    listener: (context, state) {
+                    listener: (final context, final state) {
                       if (state is AuthFailure) {
                         ScaffoldMessenger.of(
                           context,
@@ -101,7 +99,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         );
                       }
                     },
-                    builder: (context, state) {
+                    builder: (final context, final state) {
                       return SizedBox(
                         width: double.infinity,
                         child: ElevatedButton(
@@ -122,7 +120,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           child: state is AuthLoading
                               ? Transform.scale(
                                   scale: 0.6,
-                                  child: CircularProgressIndicator(
+                                  child: const CircularProgressIndicator(
                                     color: Colors.white,
                                   ),
                                 )
@@ -146,13 +144,6 @@ class _LoginScreenState extends State<LoginScreen> {
 }
 
 class CustomTextFiled extends StatelessWidget {
-  final String labelText;
-  final IconData icon;
-  final TextEditingController? controller;
-
-  final String? Function(String?)? validator;
-  final bool autofocus;
-
   const CustomTextFiled({
     super.key,
     this.validator,
@@ -161,9 +152,14 @@ class CustomTextFiled extends StatelessWidget {
     required this.icon,
     this.controller,
   });
+  final String labelText;
+  final IconData icon;
+  final TextEditingController? controller;
 
+  final String? Function(String?)? validator;
+  final bool autofocus;
   @override
-  Widget build(BuildContext context) {
+  Widget build(final BuildContext context) {
     return TextFormField(
       controller: controller,
       autofocus: autofocus,
@@ -180,11 +176,11 @@ class CustomTextFiled extends StatelessWidget {
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
-          borderSide: BorderSide(color: Colors.grey),
+          borderSide: const BorderSide(color: Colors.grey),
         ),
         errorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
-          borderSide: BorderSide(color: Colors.red),
+          borderSide: const BorderSide(color: Colors.red),
         ),
       ),
     );

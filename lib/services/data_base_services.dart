@@ -1,10 +1,7 @@
 import 'package:admain_panel/model/category_model.dart';
 import 'package:admain_panel/model/product_model.dart';
 import 'package:admain_panel/model/user_model.dart';
-import 'package:admain_panel/presentation/categories/screen/categories_screen.dart';
-import 'package:admain_panel/repo/product_repo.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/foundation.dart';
 
 abstract class ProductServices {
   Future<List<ProductModel>> getAllproduct();
@@ -14,14 +11,13 @@ abstract class ProductServices {
 }
 
 class ProductServicesImpl extends ProductServices {
-  final FirebaseFirestore firebaseFirestore;
-
   ProductServicesImpl({required this.firebaseFirestore});
+  final FirebaseFirestore firebaseFirestore;
   @override
   Future<List<ProductModel>> getAllproduct() async {
     final response = await firebaseFirestore.collection("products").get();
     final docs = response.docs;
-    return docs.map((e) => ProductModel.fromJson(e.data())).toList();
+    return docs.map((final e) => ProductModel.fromJson(e.data())).toList();
   }
 
   @override
@@ -33,13 +29,15 @@ class ProductServicesImpl extends ProductServices {
   Future<List<UserModel>> getUsers() async {
     final response = await firebaseFirestore.collection("user").get();
     final data = response.docs;
-    return data.map((e) => UserModel.fromMap(e.data())).toList();
+    return data.map((final e) => UserModel.fromMap(e.data())).toList();
   }
 
   @override
   Future<List<CatogryModel>> getcategory() async {
     final response = await firebaseFirestore.collection("category").get();
     final categories = response.docs;
-    return categories.map((e) => CatogryModel.formJason(e.data())).toList();
+    return categories
+        .map((final e) => CatogryModel.formJason(e.data()))
+        .toList();
   }
 }

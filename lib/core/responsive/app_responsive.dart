@@ -9,32 +9,32 @@ class AppResponsive {
   static const int desktopBreak = 1440;
 
   /// Check if the screen is mobile
-  static bool isMobile(BuildContext context) {
+  static bool isMobile(final BuildContext context) {
     return MediaQuery.of(context).size.width < mobileBreak;
   }
 
   /// Check if the screen is tablet
-  static bool isTablet(BuildContext context) {
+  static bool isTablet(final BuildContext context) {
     final width = MediaQuery.of(context).size.width;
     return width >= mobileBreak && width < tabletBreak;
   }
 
   /// Check if the screen is desktop
-  static bool isDesktop(BuildContext context) {
+  static bool isDesktop(final BuildContext context) {
     return MediaQuery.of(context).size.width >= tabletBreak;
   }
 
-  static bool ismenydestop(BuildContext context) {
+  static bool ismenydestop(final BuildContext context) {
     return MediaQuery.of(context).size.width >= tabletBreak;
   }
 
   /// Screen width
-  static double width(BuildContext context) {
+  static double width(final BuildContext context) {
     return MediaQuery.of(context).size.width;
   }
 
   /// Screen height
-  static double height(BuildContext context) {
+  static double height(final BuildContext context) {
     return MediaQuery.of(context).size.height;
   }
 }

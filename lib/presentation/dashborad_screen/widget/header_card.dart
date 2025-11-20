@@ -1,14 +1,6 @@
 import 'package:flutter/material.dart';
 
 class HeaderCard extends StatelessWidget {
-  final Color color;
-  final IconData icon;
-  final String title;
-  final String result;
-  final String prercent;
-  final Color percentColor;
-  final IconData arrowicon;
-
   const HeaderCard({
     super.key,
     required this.color,
@@ -19,9 +11,16 @@ class HeaderCard extends StatelessWidget {
     required this.percentColor,
     required this.arrowicon,
   });
+  final Color color;
+  final IconData icon;
+  final String title;
+  final String result;
+  final String prercent;
+  final Color percentColor;
+  final IconData arrowicon;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(final BuildContext context) {
     return Card(
       color: Colors.white,
 
@@ -36,11 +35,11 @@ class HeaderCard extends StatelessWidget {
                   backgroundColor: color.withValues(alpha: 0.2),
                   child: Icon(icon, color: color, size: 15),
                 ),
-                SizedBox(width: 10),
+                const SizedBox(width: 10),
                 Text(title, style: Theme.of(context).textTheme.labelLarge),
               ],
             ),
-            Spacer(),
+            const Spacer(),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [

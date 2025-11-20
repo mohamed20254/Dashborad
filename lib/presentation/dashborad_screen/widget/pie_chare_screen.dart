@@ -2,14 +2,14 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
 class PieData {
+  PieData(this.label, this.value, this.color);
   final String label;
   final double value;
   final Color color;
-
-  PieData(this.label, this.value, this.color);
 }
 
 class PieChartPage extends StatelessWidget {
+  PieChartPage({super.key});
   final List<PieData> pieData = [
     PieData("Electronics", 40, Colors.blue),
     PieData("Clothes", 25, Colors.orange),
@@ -17,16 +17,14 @@ class PieChartPage extends StatelessWidget {
     PieData("Others", 15, Colors.red),
   ];
 
-  PieChartPage({super.key});
-
   List<PieChartSectionData> getSections() {
-    return pieData.map((data) {
+    return pieData.map((final data) {
       return PieChartSectionData(
         value: data.value,
         color: data.color,
         title: "${data.value}%",
         radius: 70,
-        titleStyle: TextStyle(
+        titleStyle: const TextStyle(
           color: Colors.white,
           fontSize: 14,
           fontWeight: FontWeight.bold,
@@ -36,7 +34,7 @@ class PieChartPage extends StatelessWidget {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(final BuildContext context) {
     return Card(
       color: Colors.white,
       child: Padding(
@@ -48,16 +46,19 @@ class PieChartPage extends StatelessWidget {
                 CircleAvatar(
                   backgroundColor: Colors.yellowAccent.withValues(alpha: 0.2),
 
-                  child: Icon(Icons.border_outer_rounded, color: Colors.yellow),
+                  child: const Icon(
+                    Icons.border_outer_rounded,
+                    color: Colors.yellow,
+                  ),
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 Text(
                   "order Status",
                   style: Theme.of(context).textTheme.bodyMedium,
                 ),
               ],
             ),
-            SizedBox(height: 23),
+            const SizedBox(height: 23),
             SizedBox(
               height: 200,
               child: Transform.scale(
@@ -71,7 +72,7 @@ class PieChartPage extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(height: 30),
+            const SizedBox(height: 30),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -86,13 +87,13 @@ class PieChartPage extends StatelessWidget {
                 Text("Totail", style: Theme.of(context).textTheme.labelLarge),
               ],
             ),
-            Divider(),
+            const Divider(),
             SizedBox(
               height: 150,
               child: ListView.separated(
-                physics: NeverScrollableScrollPhysics(),
+                physics: const NeverScrollableScrollPhysics(),
 
-                itemBuilder: (context, index) {
+                itemBuilder: (final context, final index) {
                   return Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -104,7 +105,7 @@ class PieChartPage extends StatelessWidget {
                               backgroundColor: pieData[index].color,
                               radius: 6,
                             ),
-                            SizedBox(width: 5),
+                            const SizedBox(width: 5),
                             Text(
                               pieData[index].label,
                               style: Theme.of(context).textTheme.labelSmall,
@@ -124,7 +125,8 @@ class PieChartPage extends StatelessWidget {
                     ],
                   );
                 },
-                separatorBuilder: (context, index) => Divider(),
+                separatorBuilder: (final context, final index) =>
+                    const Divider(),
                 itemCount: pieData.length,
               ),
             ),

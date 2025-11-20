@@ -5,7 +5,7 @@ class LinerChar extends StatelessWidget {
   const LinerChar({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(final BuildContext context) {
     return Card(
       color: Colors.white,
 
@@ -19,8 +19,11 @@ class LinerChar extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  CircleAvatar(radius: 18, child: Icon(Icons.timeline_rounded)),
-                  SizedBox(width: 10),
+                  const CircleAvatar(
+                    radius: 18,
+                    child: Icon(Icons.timeline_rounded),
+                  ),
+                  const SizedBox(width: 10),
                   Text(
                     "Weekly Sales",
                     style: Theme.of(context).textTheme.bodyLarge!.copyWith(

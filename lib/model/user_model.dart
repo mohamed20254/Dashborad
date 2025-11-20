@@ -1,12 +1,13 @@
 class UserModel {
-  final String uid;
-  final String email;
-  final String displayName;
-  final String? photoUrl;
-  final String? phone;
-  final bool emailVerified;
-  final DateTime createdAt;
-  bool isselcted;
+  factory UserModel.fromFirebaseUser(final dynamic user) {
+    return UserModel(
+      uid: user.uid,
+      email: user.email ?? '',
+      displayName: user.displayName ?? '',
+      emailVerified: user.emailVerified,
+      createdAt: DateTime.now(),
+    );
+  }
 
   UserModel({
     this.isselcted = false,
@@ -19,7 +20,7 @@ class UserModel {
     this.phone,
   });
 
-  factory UserModel.fromMap(Map<String, dynamic> map) {
+  factory UserModel.fromMap(final Map<String, dynamic> map) {
     return UserModel(
       uid: map['uid'] ?? '',
       email: map['email'] ?? '',
@@ -29,6 +30,14 @@ class UserModel {
       createdAt: DateTime.tryParse(map['createdAt'] ?? '') ?? DateTime.now(),
     );
   }
+  final String uid;
+  final String email;
+  final String displayName;
+  final String? photoUrl;
+  final String? phone;
+  final bool emailVerified;
+  final DateTime createdAt;
+  bool isselcted;
 
   Map<String, dynamic> toMap() {
     return {
@@ -39,16 +48,6 @@ class UserModel {
       'createdAt': createdAt.toIso8601String(),
       'phone': phone,
     };
-  }
-
-  factory UserModel.fromFirebaseUser(dynamic user) {
-    return UserModel(
-      uid: user.uid,
-      email: user.email ?? '',
-      displayName: user.displayName ?? '',
-      emailVerified: user.emailVerified,
-      createdAt: DateTime.now(),
-    );
   }
 
   UserModel copyWithModel({

@@ -4,21 +4,20 @@ import 'dart:ui_web' as ui_web; // لتسجيل PlatformView
 import 'package:web/web.dart' as web;
 
 class WebImageWidget extends StatelessWidget {
-  final String imageUrl;
-  final double width;
-  final double height;
-
   const WebImageWidget({
     required this.imageUrl,
     this.width = 200,
     this.height = 200,
     super.key,
   });
+  final String imageUrl;
+  final double width;
+  final double height;
 
   static final Set<String> _registeredViewTypes = {};
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(final BuildContext context) {
     final viewType = 'web-img-${imageUrl.hashCode}';
 
     // تسجيل factory مرة واحدة فقط لكل URL
@@ -32,7 +31,7 @@ class WebImageWidget extends StatelessWidget {
       height: height,
       child: HtmlElementView(
         viewType: viewType,
-        onPlatformViewCreated: (viewId) {
+        onPlatformViewCreated: (final viewId) {
           final element =
               ui_web.platformViewRegistry.getViewById(viewId)
                   as web.HTMLImageElement;
@@ -43,10 +42,10 @@ class WebImageWidget extends StatelessWidget {
     );
   }
 
-  void _registerImageFactory(String viewType) {
+  void _registerImageFactory(final String viewType) {
     ui_web.platformViewRegistry.registerViewFactory(viewType, (
-      int viewId, {
-      Object? params,
+      final int viewId, {
+      final Object? params,
     }) {
       final img = web.HTMLImageElement()
         ..src = imageUrl
