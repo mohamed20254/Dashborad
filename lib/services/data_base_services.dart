@@ -1,9 +1,11 @@
 import 'package:admain_panel/model/product_model.dart';
+import 'package:admain_panel/model/user_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 abstract class ProductServices {
   Future<List<ProductModel>> getAllproduct();
   Future<void> removeElement(final String id);
+  Future<List<UserModel>> getUsers();
 }
 
 class ProductServicesImpl extends ProductServices {
@@ -20,5 +22,12 @@ class ProductServicesImpl extends ProductServices {
   @override
   Future<void> removeElement(final String id) async {
     firebaseFirestore.collection("products").doc(id).delete();
+  }
+
+  @override
+  Future<List<UserModel>> getUsers() async {
+    final response = await firebaseFirestore.collection("user").get();
+    final data = response.docs;
+    return data.map((e) => UserModel.fromMap(e.data())).toList();
   }
 }
