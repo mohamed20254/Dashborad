@@ -49,7 +49,7 @@ class AppRouter {
   static final GoRouter router = GoRouter(
     // routerNeglect: true,
     initialLocation: RoutePaths.login,
-    redirect: (context, state) {
+    redirect: (final context, final state) {
       final isLoggedIn =
           FirebaseAuth.instance.currentUser != null &&
           FirebaseAuth.instance.currentUser!.uid ==
@@ -67,61 +67,62 @@ class AppRouter {
     routes: [
       /// Login
       ShellRoute(
-        builder: (context, state, child) => Mainscreen(child: child),
+        builder: (final context, final state, final child) =>
+            Mainscreen(child: child),
         routes: [
           // Home
           GoRoute(
             name: RouteNames.dashbordScreen,
             path: RoutePaths.dashbordScreen,
-            builder: (context, state) => DashbordScreen(),
+            builder: (final context, final state) => const DashbordScreen(),
           ),
 
           // Products List
           GoRoute(
             name: RouteNames.products,
             path: RoutePaths.products,
-            builder: (context, state) => BlocProvider(
-              create: (context) => sl<ProductCubit>(),
-              child: ProductScreen(),
+            builder: (final context, final state) => BlocProvider(
+              create: (final context) => sl<ProductCubit>(),
+              child: const ProductScreen(),
             ),
           ),
           //==category
           GoRoute(
             path: RoutePaths.categoriesScreen,
             name: RouteNames.categoriesScreen,
-            builder: (context, state) => BlocProvider(
-              create: (context) => sl<CategoriesCubit>()..getCategory(),
-              child: CategoriesScreen(),
+            builder: (final context, final state) => BlocProvider(
+              create: (final context) => sl<CategoriesCubit>()..getCategory(),
+              child: const CategoriesScreen(),
             ),
           ),
           //======baner
           GoRoute(
             path: RoutePaths.user,
             name: RouteNames.user,
-            builder: (context, state) => BlocProvider(
-              create: (context) => sl<UserCubit>()..getUsers(),
-              child: UserScreen(),
+            builder: (final context, final state) => BlocProvider(
+              create: (final context) => sl<UserCubit>()..getUsers(),
+              child: const UserScreen(),
             ),
           ),
           //=====brands
           GoRoute(
             path: RoutePaths.brandScreen,
             name: RouteNames.brandScreen,
-            builder: (context, state) => BrandScreen(),
+            builder: (final context, final state) => const BrandScreen(),
           ),
           //oreder
           GoRoute(
             path: RoutePaths.orderScreen,
             name: RouteNames.orderScreen,
-            builder: (context, state) => OrderScreen(),
+            builder: (final context, final state) => const OrderScreen(),
           ),
         ],
       ),
       GoRoute(
         name: RouteNames.login,
         path: RoutePaths.login,
-        builder: (context, state) => BlocProvider(
-          create: (context) => sl<AuthCubit>(),
+        builder: (final context, final state) => BlocProvider(
+          create: (final context) => sl<AuthCubit>(),
           child: const LoginScreen(),
         ),
       ),

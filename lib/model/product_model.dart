@@ -1,19 +1,4 @@
 class ProductModel {
-  final String creationAt;
-  final String updatedAt;
-  final int id;
-  final String title;
-  final String description;
-  final double price;
-  final String categoryid;
-  final String brand;
-  final List<String> color;
-  final List<String> sizes;
-  final int stock;
-  final List<String> images;
-  final double rating;
-  final double discountPercentage;
-  bool iselected;
   ProductModel({
     this.iselected = false,
     required this.discountPercentage,
@@ -31,6 +16,7 @@ class ProductModel {
     required this.images,
     required this.rating,
   });
+  // ignore: prefer_final_parameters
   factory ProductModel.fromJson(Map<String, dynamic> jsondata) {
     return ProductModel(
       creationAt: jsondata["creationAt"] ?? "",
@@ -56,6 +42,21 @@ class ProductModel {
       updatedAt: jsondata["updatedAt"] ?? "",
     );
   }
+  final String creationAt;
+  final String updatedAt;
+  final int id;
+  final String title;
+  final String description;
+  final double price;
+  final String categoryid;
+  final String brand;
+  final List<String> color;
+  final List<String> sizes;
+  final int stock;
+  final List<String> images;
+  final double rating;
+  final double discountPercentage;
+  bool iselected;
   Map<String, dynamic> tojson() {
     return {
       "id": id,

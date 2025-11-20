@@ -20,7 +20,7 @@ class Order {
 }
 
 class RecentOrder extends StatefulWidget {
-  RecentOrder({super.key});
+  const RecentOrder({super.key});
 
   @override
   State<RecentOrder> createState() => _RecentOrderState();
@@ -36,13 +36,7 @@ class _RecentOrderState extends State<RecentOrder> {
       amount: 15.0,
       status: "Completed",
     ),
-    Order(
-      id: "002",
-      productName: "Jeans",
-      date: "18/11/2025",
-      amount: 40.0,
-      status: "Pending",
-    ),
+    Order(id: "002", productName: "Jeans", date: "18/11/2025", amount: 40.0),
     Order(
       id: "003",
       productName: "Jacket",
@@ -50,13 +44,7 @@ class _RecentOrderState extends State<RecentOrder> {
       amount: 60.0,
       status: "Completed",
     ),
-    Order(
-      id: "004",
-      productName: "Sneakers",
-      date: "16/11/2025",
-      amount: 80.0,
-      status: "Pending",
-    ),
+    Order(id: "004", productName: "Sneakers", date: "16/11/2025", amount: 80.0),
     Order(
       id: "005",
       productName: "Cap",
@@ -64,13 +52,7 @@ class _RecentOrderState extends State<RecentOrder> {
       amount: 12.0,
       status: "Completed",
     ),
-    Order(
-      id: "006",
-      productName: "Socks",
-      date: "14/11/2025",
-      amount: 5.0,
-      status: "Pending",
-    ),
+    Order(id: "006", productName: "Socks", date: "14/11/2025", amount: 5.0),
 
     // إلكترونيات
     Order(
@@ -80,13 +62,7 @@ class _RecentOrderState extends State<RecentOrder> {
       amount: 500.0,
       status: "Completed",
     ),
-    Order(
-      id: "008",
-      productName: "Laptop",
-      date: "12/11/2025",
-      amount: 1200.0,
-      status: "Pending",
-    ),
+    Order(id: "008", productName: "Laptop", date: "12/11/2025", amount: 1200.0),
     Order(
       id: "009",
       productName: "Headphones",
@@ -99,7 +75,6 @@ class _RecentOrderState extends State<RecentOrder> {
       productName: "Smartwatch",
       date: "10/11/2025",
       amount: 150.0,
-      status: "Pending",
     ),
     Order(
       id: "011",
@@ -108,13 +83,7 @@ class _RecentOrderState extends State<RecentOrder> {
       amount: 700.0,
       status: "Completed",
     ),
-    Order(
-      id: "012",
-      productName: "Tablet",
-      date: "08/11/2025",
-      amount: 350.0,
-      status: "Pending",
-    ),
+    Order(id: "012", productName: "Tablet", date: "08/11/2025", amount: 350.0),
 
     // ملابس
     Order(
@@ -124,13 +93,7 @@ class _RecentOrderState extends State<RecentOrder> {
       amount: 45.0,
       status: "Completed",
     ),
-    Order(
-      id: "014",
-      productName: "Hoodie",
-      date: "06/11/2025",
-      amount: 35.0,
-      status: "Pending",
-    ),
+    Order(id: "014", productName: "Hoodie", date: "06/11/2025", amount: 35.0),
 
     // إلكترونيات
     Order(
@@ -145,7 +108,6 @@ class _RecentOrderState extends State<RecentOrder> {
       productName: "Bluetooth Speaker",
       date: "04/11/2025",
       amount: 60.0,
-      status: "Pending",
     ),
 
     // ملابس
@@ -158,46 +120,39 @@ class _RecentOrderState extends State<RecentOrder> {
     ),
 
     // إلكترونيات
-    Order(
-      id: "018",
-      productName: "Monitor",
-      date: "02/11/2025",
-      amount: 220.0,
-      status: "Pending",
-    ),
+    Order(id: "018", productName: "Monitor", date: "02/11/2025", amount: 220.0),
   ];
   bool isallslecteed = false;
   @override
-  Widget build(BuildContext context) {
-    final ScrollController _scrollController = ScrollController();
-    final ScrollController _scrollController2 = ScrollController();
+  Widget build(final BuildContext context) {
+    final ScrollController scrollController = ScrollController();
+    final ScrollController scrollController2 = ScrollController();
     return SizedBox(
       height: 585,
       child: Card(
         color: Colors.white,
         child: Padding(
-          padding: EdgeInsetsGeometry.all(12),
+          padding: const EdgeInsetsGeometry.all(12),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Row(
-                mainAxisAlignment: MainAxisAlignment.start,
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   CircleAvatar(
                     backgroundColor: Colors.deepPurpleAccent.withValues(
                       alpha: 0.3,
                     ),
-                    child: Icon(Icons.pix_rounded),
+                    child: const Icon(Icons.pix_rounded),
                   ),
-                  SizedBox(width: 10),
+                  const SizedBox(width: 10),
                   Text(
                     "Recent Order",
                     style: Theme.of(context).textTheme.bodyMedium,
                   ),
                 ],
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
 
               SizedBox(
                 height: 450,
@@ -211,17 +166,17 @@ class _RecentOrderState extends State<RecentOrder> {
                   ),
 
                   child: Scrollbar(
-                    controller: _scrollController,
+                    controller: scrollController,
 
                     thumbVisibility: true,
                     child: ListView(
-                      controller: _scrollController,
+                      controller: scrollController,
                       scrollDirection: Axis.horizontal,
                       children: [
                         Column(
                           children: [
                             ConstrainedBox(
-                              constraints: BoxConstraints(maxWidth: 800),
+                              constraints: const BoxConstraints(maxWidth: 800),
                               child: customRow(
                                 ismain: true,
                                 context,
@@ -232,9 +187,9 @@ class _RecentOrderState extends State<RecentOrder> {
                                 status: "Status",
                                 ledding: Checkbox(
                                   value: isallslecteed,
-                                  onChanged: (value) {
+                                  onChanged: (final value) {
                                     recentOrders.forEach(
-                                      (element) =>
+                                      (final element) =>
                                           element.isSelected = value ?? false,
                                     );
                                     isallslecteed = value ?? false;
@@ -246,20 +201,22 @@ class _RecentOrderState extends State<RecentOrder> {
                             ),
                             Expanded(
                               child: ConstrainedBox(
-                                constraints: BoxConstraints(maxWidth: 800),
+                                constraints: const BoxConstraints(
+                                  maxWidth: 800,
+                                ),
 
                                 child: Scrollbar(
-                                  controller: _scrollController2,
+                                  controller: scrollController2,
 
                                   child: ListView.builder(
-                                    controller: _scrollController2,
+                                    controller: scrollController2,
                                     shrinkWrap: true,
                                     itemCount: recentOrders.length,
-                                    itemBuilder: (context, index) {
+                                    itemBuilder: (final context, final index) {
                                       return customRow(
                                         ledding: Checkbox(
                                           value: recentOrders[index].isSelected,
-                                          onChanged: (value) {
+                                          onChanged: (final value) {
                                             setState(() {
                                               recentOrders[index].isSelected =
                                                   value ?? true;
@@ -290,14 +247,14 @@ class _RecentOrderState extends State<RecentOrder> {
                 children: [
                   IconButton(
                     onPressed: () {
-                      recentOrders.forEach((element) {
+                      recentOrders.forEach((final element) {
                         if (element.isSelected == true) {
                           recentOrders.remove(element);
                         }
                         setState(() {});
                       });
                     },
-                    icon: Icon(Icons.delete, color: Colors.red),
+                    icon: const Icon(Icons.delete, color: Colors.red),
                   ),
                 ],
               ),
@@ -309,7 +266,7 @@ class _RecentOrderState extends State<RecentOrder> {
   }
 
   Container customRow(
-    BuildContext context, {
+    final BuildContext context, {
     required final String id,
     required final String name,
     required final String date,
@@ -338,7 +295,7 @@ class _RecentOrderState extends State<RecentOrder> {
   }
 
   SizedBox sizeboxInRow(
-    BuildContext context, {
+    final BuildContext context, {
     required final String text,
     final Widget? ledding,
   }) {
@@ -346,7 +303,7 @@ class _RecentOrderState extends State<RecentOrder> {
       width: 100,
       child: Row(
         children: [
-          ledding ?? SizedBox(),
+          ledding ?? const SizedBox(),
           Text(
             text,
             style: Theme.of(context).textTheme.labelLarge,

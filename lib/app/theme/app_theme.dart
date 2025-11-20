@@ -5,8 +5,8 @@ class AppTheme {
   static AppTheme instanc = AppTheme._();
   final ThemeData theme = ThemeData(
     scaffoldBackgroundColor: Colors.grey[200],
-    primaryColor: Color(0xFF3F51B5),
-    textTheme: TextTheme(
+    primaryColor: const Color(0xFF3F51B5),
+    textTheme: const TextTheme(
       titleLarge: TextStyle(
         fontSize: 28,
         fontWeight: FontWeight.w700,

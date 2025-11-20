@@ -9,10 +9,10 @@ class BrandScreen extends StatefulWidget {
 
 class _BrandScreenState extends State<BrandScreen> {
   @override
-  Widget build(BuildContext context) {
+  Widget build(final BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: InkWell(onTap: () {}, child: Text("brands")),
+        title: InkWell(onTap: () {}, child: const Text("brands")),
       ),
     );
   }

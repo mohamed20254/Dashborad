@@ -1,11 +1,8 @@
-import 'dart:ui';
-
 import 'package:admain_panel/core/responsive/app_responsive.dart';
 import 'package:admain_panel/presentation/dashborad_screen/widget/header_card.dart';
 import 'package:admain_panel/presentation/dashborad_screen/widget/liner_char_card.dart';
 import 'package:admain_panel/presentation/dashborad_screen/widget/pie_chare_screen.dart';
 import 'package:admain_panel/presentation/dashborad_screen/widget/recent_order.dart';
-import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
 class DashbordScreen extends StatefulWidget {
@@ -17,7 +14,7 @@ class DashbordScreen extends StatefulWidget {
 
 class _DashbordScreenState extends State<DashbordScreen> {
   @override
-  Widget build(BuildContext context) {
+  Widget build(final BuildContext context) {
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -26,10 +23,10 @@ class _DashbordScreenState extends State<DashbordScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text("Dashborad", style: Theme.of(context).textTheme.titleSmall),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               //============header
               _buildHeader(context),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -37,17 +34,17 @@ class _DashbordScreenState extends State<DashbordScreen> {
                     flex: AppResponsive.isDesktop(context) ? 2 : 1,
                     child: Column(
                       children: [
-                        LinerChar(),
+                        const LinerChar(),
                         !AppResponsive.isDesktop(context)
                             ? PieChartPage()
-                            : SizedBox(),
+                            : const SizedBox(),
                         RecentOrder(),
                       ],
                     ),
                   ),
                   AppResponsive.isDesktop(context)
                       ? Expanded(child: PieChartPage())
-                      : SizedBox(),
+                      : const SizedBox(),
                 ],
               ),
             ],
@@ -57,9 +54,9 @@ class _DashbordScreenState extends State<DashbordScreen> {
     );
   }
 
-  GridView _buildHeader(BuildContext context) {
+  GridView _buildHeader(final BuildContext context) {
     return GridView(
-      physics: NeverScrollableScrollPhysics(),
+      physics: const NeverScrollableScrollPhysics(),
       shrinkWrap: true,
 
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -74,7 +71,7 @@ class _DashbordScreenState extends State<DashbordScreen> {
         mainAxisSpacing: 4,
       ),
 
-      children: [
+      children: const [
         HeaderCard(
           color: Colors.blueAccent,
           icon: Icons.microwave_outlined,
