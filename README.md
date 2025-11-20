@@ -8,10 +8,16 @@
 ## 📸 Screenshots
  
 <p align="center">
-  <img src="assets/images/Screenshot2025-11-20230002.png" width="260">
-  <img src="assets/images/Screenshot2025-11-20230242.png" width="260">
-  <img src="assets/images/Screenshot2025-11-20230312.png" width="260"> 
-  <img src="assets/images/Screenshot2025-11-20230708.png" width="260">
+  <img src="assets/images/Screenshot2025-11-20230002.png" width="600" style="margin-bottom:10px;">
+</p>
+<p align="center">
+  <img src="assets/images/Screenshot2025-11-20230242.png" width="600" style="margin-bottom:10px;">
+</p>
+<p align="center">
+  <img src="assets/images/Screenshot2025-11-20230312.png" width="600" style="margin-bottom:10px;">
+</p>
+<p align="center">
+  <img src="assets/images/Screenshot2025-11-20230708.png" width="600" style="margin-bottom:10px;">
 </p>
 
 ---
