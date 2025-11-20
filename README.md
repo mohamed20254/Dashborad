@@ -70,28 +70,4 @@
 
 ---
 
-## 🧱 Project Structure (MVVM)
 
-```bash
-lib/
-  ├── core/
-  │   ├── theme/
-  │   ├── utils/
-  │   ├── navigation/        # Navigator 2.0
-  │   └── services/
-  │
-  ├── data/
-  │   ├── models/
-  │   ├── repositories/
-  │   └── datasources/
-  │
-  ├── presentation/
-  │   ├── screens/
-  │   ├── viewmodels/        # Cubits
-  │   └── widgets/
-  │
-  ├── responsive/
-  │   ├── layout_builder.dart
-  │   └── adaptive_widgets/
-  │
-  └── main.dart
