@@ -8,10 +8,16 @@
 ## 📸 Screenshots
  
 <p align="center">
-  <img src="assets/images/Screenshot2025-11-20230002.png" width="260">
-  <img src="assets/images/Screenshot2025-11-20230242.png" width="260">
-  <img src="assets/images/Screenshot2025-11-20230312.png" width="260"> 
-  <img src="assets/images/Screenshot2025-11-20230708.png" width="260">
+  <img src="assets/images/Screenshot2025-11-20230002.png" width="600" style="margin-bottom:10px;">
+</p>
+<p align="center">
+  <img src="assets/images/Screenshot2025-11-20230242.png" width="600" style="margin-bottom:10px;">
+</p>
+<p align="center">
+  <img src="assets/images/Screenshot2025-11-20230312.png" width="600" style="margin-bottom:10px;">
+</p>
+<p align="center">
+  <img src="assets/images/Screenshot2025-11-20230708.png" width="600" style="margin-bottom:10px;">
 </p>
 
 ---
@@ -64,28 +70,4 @@
 
 ---
 
-## 🧱 Project Structure (MVVM)
 
-```bash
-lib/
-  ├── core/
-  │   ├── theme/
-  │   ├── utils/
-  │   ├── navigation/        # Navigator 2.0
-  │   └── services/
-  │
-  ├── data/
-  │   ├── models/
-  │   ├── repositories/
-  │   └── datasources/
-  │
-  ├── presentation/
-  │   ├── screens/
-  │   ├── viewmodels/        # Cubits
-  │   └── widgets/
-  │
-  ├── responsive/
-  │   ├── layout_builder.dart
-  │   └── adaptive_widgets/
-  │
-  └── main.dart
