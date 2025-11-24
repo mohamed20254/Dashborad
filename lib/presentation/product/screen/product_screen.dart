@@ -13,7 +13,7 @@ class ProductScreen extends StatefulWidget {
 
 class _ProductScreenState extends State<ProductScreen> {
   @override
-  Widget build(BuildContext context) {
+  Widget build(final BuildContext context) {
     return Scaffold(
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -26,7 +26,7 @@ class _ProductScreenState extends State<ProductScreen> {
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: BlocBuilder<ProductCubit, ProductState>(
-                  builder: (context, state) {
+                  builder: (final context, final state) {
                     if (state is ProductLoding) {
                       return const Center(child: CircularProgressIndicator());
                     } else if (state is ProductFailure) {
@@ -54,7 +54,8 @@ class _ProductScreenState extends State<ProductScreen> {
                                       IconButton(
                                         onPressed: () {
                                           state.products.removeWhere(
-                                            (element) => element.iselected,
+                                            (final element) =>
+                                                element.iselected,
                                           );
                                           setState(() {});
                                         },
@@ -106,7 +107,7 @@ class _ProductScreenState extends State<ProductScreen> {
     );
   }
 
-  Row _buildAppbarwithPeouduct(BuildContext context) {
+  Row _buildAppbarwithPeouduct(final BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
