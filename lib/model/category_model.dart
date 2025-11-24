@@ -1,4 +1,12 @@
 class CatogryModel {
+  factory CatogryModel.formJason(final Map<String, dynamic> json) {
+    return CatogryModel(
+      name: json["name"] ?? "",
+      image: json["image"] ?? "",
+      parentid: json["parentID"] ?? "",
+      isFeatured: json['Isfeatured'] ?? false,
+    );
+  }
   final String name;
   final String image;
   final String parentid;
@@ -11,14 +19,6 @@ class CatogryModel {
     this.isFeatured = true,
     this.isselcteed = false,
   });
-  factory CatogryModel.formJason(Map<String, dynamic> json) {
-    return CatogryModel(
-      name: json["name"] ?? "",
-      image: json["image"] ?? "",
-      parentid: json["parentID"] ?? "",
-      isFeatured: json['Isfeatured'] ?? false,
-    );
-  }
 
   Map<String, dynamic> tojson() {
     return {
